@@ -1,7 +1,7 @@
 #encoding = utf-8
 from TextCNN import TextCNN
 from sklearn.model_selection import train_test_split
-from data_helper import load_data_and_labels
+from data_helper2 import load_data_and_labels
 import numpy as np
 from sklearn.model_selection import train_test_split
 def train():
@@ -11,11 +11,12 @@ def train():
     NUM_FILTERS = 128
     FILTER_SIZES = [3, 4, 5]
     # Load data and labels
-    data,labels,num_words=load_data_and_labels("/erp/CLOUD_DISK/notebook/Me")
+    data,labels,num_words=load_data_and_labels("/erp/CLOUD_DISK/notebook/Me/taxCode.txt")
     indices=np.arange(data.shape[0])
     np.random.shuffle(indices)
     data=data[indices]
     labels=labels[indices]
+    num_classes=len(set(labels))
     # split the data into a training set and a test set
     x_train,x_test,y_train,y_test=train_test_split(data,labels,test_size=0.3,random_state=42)
     print('Start training.')

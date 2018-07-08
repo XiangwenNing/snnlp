@@ -22,9 +22,10 @@ def load_data_and_labels(file):
                 label_index[label] = label_id
             else:
                 label_id=label_index[label]
-            tmp=""
+            tmp=[]
             for item in line_list:
-                tmp+=" ".join(jieba.cut(item))
+                tmp.append(" ".join(jieba.cut(item)))
+            tmp=" ".join(tmp)
             if len(tmp.split()) > max_sequence_length:
                 max_sequence_length = len(tmp.split())
             data.append(tmp)
